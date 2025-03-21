@@ -1,8 +1,6 @@
 import { Button } from "./ui/button";
-import { buttonVariants } from "./ui/button";
-import { HeroCards } from "./HeroCards";
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
-
+import '@/components/css/hero.css'
+import hero from '@/assets/hero2.png'
 export const Hero = () => {
   return (
     <section className="container grid lg:grid-cols-2 place-items-center py-20 md:py-32 gap-10">
@@ -32,8 +30,8 @@ export const Hero = () => {
       </div>
 
       {/* Hero cards sections */}
-      <div className="z-10">
-        <HeroCards />
+      <div className="z-10 hidden lg:flex flex-row flex-wrap gap-8 relative w-[700px] h-[500px]">
+       <img className='hero-first' src={hero} alt="" />
       </div>
 
       {/* Shadow effect */}

@@ -13,34 +13,27 @@ interface FAQProps {
 
 const FAQList: FAQProps[] = [
   {
-    question: "Is this template free?",
-    answer: "Yes. It is a free ChadcnUI template.",
+    question: "Які послуги надає наша компанія?",
+    answer: "Наша компанія спеціалізується на наданні послуг з підготовки дипломних робіт, студентських робіт та інших академічних завдань. Ми пропонуємо високоякісну підтримку та консультації в цих сферах.",
     value: "item-1",
   },
   {
-    question: "Lorem ipsum dolor sit amet consectetur adipisicing elit?",
+    question: "Які переваги ми пропонуємо своїм клієнтам?",
     answer:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint labore quidem quam? Consectetur sapiente iste rerum reiciendis animi nihil nostrum sit quo, modi quod.",
+      "Наша компанія гарантує якість та професіоналізм у кожній виконаній роботі. Ми пропонуємо індивідуальний підхід до кожного клієнта, швидку відповідь на запитання та можливість внесення змін у завдання за бажанням замовника.",
     value: "item-2",
   },
   {
     question:
-      "Lorem ipsum dolor sit amet  Consectetur natus dolores minus quibusdam?",
+      "Чому варто обрати нас?",
     answer:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore qui nostrum reiciendis veritatis necessitatibus maxime quis ipsa vitae cumque quo?",
+      "Ми маємо значний досвід у сфері підготовки академічних робіт, а також широкий спектр професіоналів, здатних виконати завдання будь-якої складності. Крім того, ми пропонуємо конкурентоспроможні ціни та високу якість послуг.",
     value: "item-3",
   },
   {
-    question: "Lorem ipsum dolor sit amet, consectetur adipisicing elit?",
-    answer: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
+    question: "Чи гарантуємо ми конфіденційність даних клієнтів?",
+    answer: "Так, ми повністю забезпечуємо конфіденційність даних наших клієнтів. Вся інформація, яку нам надають, залишається в суворій конфіденційності та не розголошується третім особам.",
     value: "item-4",
-  },
-  {
-    question:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur natus?",
-    answer:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint labore quidem quam? Consectetur sapiente iste rerum reiciendis animi nihil nostrum sit quo, modi quod.",
-    value: "item-5",
   },
 ];
 
@@ -51,9 +44,9 @@ export const FAQ = () => {
       className="container py-24 sm:py-32"
     >
       <h2 className="text-3xl md:text-4xl font-bold mb-4">
-        Frequently Asked{" "}
+      Поширені{" "}
         <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
-          Questions
+        запитання
         </span>
       </h2>
 

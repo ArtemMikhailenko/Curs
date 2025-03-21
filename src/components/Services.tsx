@@ -1,6 +1,6 @@
 import { Card, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import { MagnifierIcon, WalletIcon, ChartIcon } from "./Icons";
-import cubeLeg from "../assets/cube-leg.png";
+import cubeLeg from "../assets/genetic.svg";
 
 interface ServiceProps {
   title: string;
@@ -10,21 +10,21 @@ interface ServiceProps {
 
 const serviceList: ServiceProps[] = [
   {
-    title: "Code Collaboration",
+    title: "Консультації та супровід",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nesciunt est nostrum omnis ab sapiente.",
+      "Надаємо професійні консультації з підготовки дипломних, курсових та інших навчальних робіт. Допомагаємо структурувати дослідження та оформити результат згідно вимог.",
     icon: <ChartIcon />,
   },
   {
-    title: "Project Management",
+    title: "Проектне управління",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nesciunt est nostrum omnis ab sapiente.",
+      "Організуємо весь процес роботи над проектами: від планування до здачі фінального варіанту, гарантуючи високий рівень якості та своєчасне виконання.",
     icon: <WalletIcon />,
   },
   {
-    title: "Task Automation",
+    title: "Автоматизація завдань",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nesciunt est nostrum omnis ab sapiente.",
+      "Розробляємо кастомні рішення для автоматизації рутинних процесів, що дозволяють економити час і зосередитись на головних аспектах дослідження.",
     icon: <MagnifierIcon />,
   },
 ];
@@ -36,14 +36,13 @@ export const Services = () => {
         <div>
           <h2 className="text-3xl md:text-4xl font-bold">
             <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
-              Client-Centric{" "}
-            </span>
-            Services
+              Професійні
+            </span>{" "}
+            Послуги
           </h2>
 
           <p className="text-muted-foreground text-xl mt-4 mb-8 ">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis
-            dolor.
+            Надаємо комплексне супроводження студентських проектів – від консультацій до впровадження автоматизованих рішень.
           </p>
 
           <div className="flex flex-col gap-8">
@@ -68,7 +67,7 @@ export const Services = () => {
         <img
           src={cubeLeg}
           className="w-[300px] md:w-[500px] lg:w-[600px] object-contain"
-          alt="About services"
+          alt="Про наші послуги"
         />
       </div>
     </section>
