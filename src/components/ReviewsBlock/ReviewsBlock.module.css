@@ -1,0 +1,475 @@
+.reviewsContainer {
+    position: relative;
+    width: 100%;
+    min-height: 700px;
+    margin: 0 auto;
+    padding: 40px 40px;
+  }
+  
+  .content {
+    position: relative;
+    max-width: 1400px;
+    margin: 0 auto;
+    z-index: 2;
+  }
+  
+  .title {
+    font-size: 3.5rem;
+    text-align: center;
+    margin-bottom: 80px;
+    position: relative;
+    color: #2d3748;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  
+  .sparkleIcon {
+    color: var(--primary-color);
+    animation: sparkle 2s infinite;
+  }
+  
+  @keyframes sparkle {
+    0%,
+    100% {
+      transform: scale(1) rotate(0deg);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.2) rotate(180deg);
+      opacity: 0.8;
+    }
+  }
+  
+  .titleHighlight {
+    background: var(--primary-color);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .titleHighlight::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 60%;
+    height: 3px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--primary-color),
+      transparent
+    );
+    animation: shimmer 2s infinite;
+  }
+  
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  
+  .slider {
+    position: relative;
+    height: 500px;
+    margin-top: 40px;
+    margin-bottom: 60px;
+    perspective: 2400px;
+  }
+  
+  .card {
+    position: absolute;
+    width: 410px;
+    height: auto;
+    left: 50%;
+    top: 50%;
+    cursor: pointer;
+    transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  
+  .cardContent {
+    /* background: rgba(255, 255, 255, 0.95); */
+    border-radius: 30px;
+    /* padding: 40px; */
+    border: 3px solid var(--accent-color);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(20px);
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  
+  .cardInner {
+    position: relative;
+    z-index: 2;
+  }
+  
+  .card.active {
+    transform: translate(-50%, -50%) scale(1) rotateY(0);
+    z-index: 5;
+  }
+  
+  .card.prev {
+    transform: translate(-130%, -50%) scale(0.8) rotateY(25deg);
+    opacity: 0.7;
+    z-index: 4;
+  }
+  
+  .card.next {
+    transform: translate(30%, -50%) scale(0.8) rotateY(-25deg);
+    opacity: 0.7;
+    z-index: 4;
+  }
+  
+  .card.hidden {
+    transform: translate(-50%, -50%) scale(0.6);
+    opacity: 0;
+    z-index: 1;
+  }
+  
+  .card:hover .cardContent {
+    transform: translateZ(30px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12), 0 0 0 2px rgba(78, 205, 196, 0.2);
+  }
+  
+  .avatarWrapper {
+    position: relative;
+    width: 100%;
+      max-height: 500px;
+  }
+  
+  .avatar {
+    width: 100%;
+    max-height: 700px;   
+    object-fit: contain;
+    border-radius: 20px;
+    border: 4px solid var(--primary-color);
+    background: white;
+    position: relative;
+    z-index: 2;
+    transition: transform 0.3s ease;
+  }
+    .avatar img{
+height: 100%;
+width: 100%;
+  }
+  
+  .avatarGlow {
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    border-radius: 50%;
+    filter: blur(15px);
+    opacity: 0.5;
+    z-index: 1;
+    animation: pulseGlow 2s infinite;
+  }
+  
+  @keyframes pulseGlow {
+    0%,
+    100% {
+      transform: scale(1);
+      opacity: 0.5;
+    }
+    50% {
+      transform: scale(1.1);
+      opacity: 0.3;
+    }
+  }
+  
+  .quoteIcon {
+    color: #4ecdc4;
+    opacity: 0.5;
+    margin: 0 auto 20px;
+    display: block;
+  }
+  
+  .reviewContent {
+    text-align: center;
+  }
+  
+  .reviewText {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: #4a5568;
+    margin-bottom: 25px;
+    font-style: italic;
+  }
+  
+  .reviewerName {
+    font-size: 1.4rem;
+    color: #2d3748;
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+  
+  .reviewerRole {
+    font-size: 1rem;
+    color: #718096;
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+  
+  .rating {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+  }
+  
+  .starFilled {
+    color: #ffd700;
+    filter: drop-shadow(0 0 3px rgba(255, 215, 0, 0.5));
+    animation: starPop 0.3s ease-out;
+  }
+  
+  .starEmpty {
+    color: #cbd5e0;
+  }
+  
+  @keyframes starPop {
+    0% {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  .indicators {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .indicator {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #cbd5e0;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+    position: relative;
+  }
+  
+  .indicator::after {
+    content: "";
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border-radius: 50%;
+    background: rgba(78, 205, 196, 0.2);
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+  
+  .indicator:hover::after {
+    opacity: 1;
+  }
+  
+  .indicator:hover {
+    background: var(--accent-color);
+    transform: scale(1.2);
+  }
+  
+  .activeIndicator {
+    background: var(--accent-color);
+    transform: scale(1.2);
+  }
+  
+  .activeIndicator::after {
+    content: "";
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border-radius: 50%;
+    background: rgba(78, 205, 196, 0.2);
+    animation: pulseIndicator 2s infinite;
+  }
+  
+  @keyframes pulseIndicator {
+    0%,
+    100% {
+      transform: scale(1);
+      opacity: 0.2;
+    }
+    50% {
+      transform: scale(1.5);
+      opacity: 0;
+    }
+  }
+  
+  @media (max-width: 1200px) {
+    .reviewsContainer {
+      padding: 80px 20px;
+    }
+    .card {
+      width: 420px;
+    }
+    .title {
+      font-size: 3rem;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .card {
+      width: 380px;
+    }
+    .card.prev {
+      transform: translate(-110%, -50%) scale(0.8) rotateY(25deg);
+    }
+    .card.next {
+      transform: translate(10%, -50%) scale(0.8) rotateY(-25deg);
+    }
+    .reviewText {
+      font-size: 1.1rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .reviewsContainer {
+      padding: 60px 15px;
+      min-height: 600px;
+    }
+    .title {
+      font-size: 2.5rem;
+      margin-bottom: 60px;
+    }
+    .slider {
+      height: 450px;
+    }
+    .card {
+      width: 340px;
+    }
+    .cardContent {
+      padding: 30px;
+    }
+    .avatarWrapper {
+        width: 100%;
+        height: 100%;
+    }
+    .reviewText {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    .reviewerName {
+      font-size: 1.2rem;
+    }
+    .card.prev {
+      transform: translate(-100%, -50%) scale(0.8) rotateY(25deg);
+      opacity: 0.5;
+    }
+    .card.next {
+      transform: translate(0%, -50%) scale(0.8) rotateY(-25deg);
+      opacity: 0.5;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .title {
+      font-size: 2rem;
+      margin-bottom: 40px;
+    }
+    .card {
+      width: 300px;
+    }
+    .cardContent {
+      padding: 25px;
+    }
+    .avatarWrapper {
+      width: 100%;
+      height: 100%;
+    }
+    .reviewText {
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+    }
+    .reviewerName {
+      font-size: 1.1rem;
+    }
+    .reviewerRole {
+      font-size: 0.9rem;
+    }
+    .card.prev {
+      transform: translate(-90%, -50%) scale(0.8) rotateY(25deg);
+      opacity: 0.4;
+    }
+    .card.next {
+      transform: translate(-10%, -50%) scale(0.8) rotateY(-25deg);
+      opacity: 0.4;
+    }
+    .indicator {
+      width: 12px;
+      height: 12px;
+    }
+    .floatingObject {
+      width: 400px;
+      height: 400px;
+    }
+  }
+  
+  @media (hover: none) {
+    .card:hover .cardContent {
+      transform: none;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(255, 255, 255, 0.5);
+    }
+    .card:hover .avatar {
+      transform: none;
+    }
+    .indicator:hover {
+      transform: none;
+      background: #cbd5e0;
+    }
+    .indicator:hover::after {
+      opacity: 0;
+    }
+    .activeIndicator {
+      background: #4ecdc4;
+    }
+  }
+  
+  @media print {
+    .reviewsContainer {
+      background: none;
+      padding: 20px;
+    }
+    .backgroundAnimation,
+    .floatingObject,
+    .avatarGlow,
+    .indicators {
+      display: none;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      opacity: 1 !important;
+      transform: none !important;
+      margin-bottom: 30px;
+      page-break-inside: avoid;
+    }
+    .cardContent {
+      box-shadow: none;
+      border: 1px solid #eee;
+    }
+  }
