@@ -5,7 +5,7 @@ export const reviews = [
       role: "Учениця 10 класу",
       rating: 5,
       text: "IQ Math допоміг мені закріпити знання з математики та надихнув на нові досягнення! Я відчуваю впевненість під час виконання завдань.",
-      avatar: "../src/assets/comments/comment1.jpg",
+      avatar: "/comments/comment1.jpg",
     },
     {
       id: 2,
@@ -13,7 +13,7 @@ export const reviews = [
       role: "Студент",
       rating: 4,
       text: "Зручний інтерфейс і цікаві завдання. Навчання стало справжнім задоволенням, а завдання надихають на саморозвиток.",
-      avatar: "../src/assets/comments/comment2.jpg",
+      avatar: "/comments/comment2.jpg",
     },
     {
       id: 3,
@@ -21,7 +21,7 @@ export const reviews = [
       role: "Вчитель математики",
       rating: 5,
       text: "Інтерактивність та різноманіття матеріалів роблять навчання захоплюючим! Рекомендую всім, хто хоче розвиватися в математиці.",
-      avatar: "../src/assets/comments/comment3.jpg",
+      avatar: "/comments/comment3.jpg",
     },
     {
       id: 4,
@@ -29,7 +29,7 @@ export const reviews = [
       role: "Учень 11 класу",
       rating: 4,
       text: "Завдяки IQ Math я відкрив для себе нові підходи до вирішення задач, що робить процес навчання цікавішим.",
-      avatar: "../src/assets/comments/comment4.jpg",
+      avatar: "/comments/comment4.jpg",
     },
     {
         id: 5,
@@ -37,7 +37,7 @@ export const reviews = [
         role: "Учень 11 класу",
         rating: 4,
         text: "Завдяки IQ Math я відкрив для себе нові підходи до вирішення задач, що робить процес навчання цікавішим.",
-        avatar: "../src/assets/comments/comment5.jpg",
+        avatar: "/comments/comment5.jpg",
       },
       {
         id: 6,
@@ -45,7 +45,7 @@ export const reviews = [
         role: "Учень 11 класу",
         rating: 4,
         text: "Завдяки IQ Math я відкрив для себе нові підходи до вирішення задач, що робить процес навчання цікавішим.",
-        avatar: "../src/assets/comments/comment6.jpg",
+        avatar: "/comments/comment6.jpg",
       },
       {
         id: 7,
@@ -53,7 +53,7 @@ export const reviews = [
         role: "Учень 11 класу",
         rating: 4,
         text: "Завдяки IQ Math я відкрив для себе нові підходи до вирішення задач, що робить процес навчання цікавішим.",
-        avatar: "../src/assets/comments/comment7.jpg",
+        avatar: "/comments/comment7.jpg",
       },
       {
         id: 8,
@@ -61,7 +61,7 @@ export const reviews = [
         role: "Учень 11 класу",
         rating: 4,
         text: "Завдяки IQ Math я відкрив для себе нові підходи до вирішення задач, що робить процес навчання цікавішим.",
-        avatar: "../src/assets/comments/comment8.jpg",
+        avatar: "/comments/comment8.jpg",
       },
       {
         id: 9,
@@ -69,6 +69,6 @@ export const reviews = [
         role: "Учень 11 класу",
         rating: 4,
         text: "Завдяки IQ Math я відкрив для себе нові підходи до вирішення задач, що робить процес навчання цікавішим.",
-        avatar: "../src/assets/comments/comment9.jpg",
+        avatar: "/comments/comment9.jpg",
       },
   ];
