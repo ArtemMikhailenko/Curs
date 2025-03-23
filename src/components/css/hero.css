@@ -3,3 +3,163 @@
     position: relative;
     top: -100px;
 }
+.marquee-section {
+    overflow: hidden;
+    position: relative;
+    padding: 40px 0;
+  }
+  
+  .marquee-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  /* Загальні стилі для бігучих строк */
+  .marquee {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    -webkit-mask-image: -webkit-linear-gradient(left, transparent 0%, black 5%, black 95%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+  }
+  
+  .marquee-track {
+    display: flex;
+    position: relative;
+    white-space: nowrap;
+    will-change: transform;
+  }
+  
+  /* Використовуємо 3 копії замість 2 для більш плавної анімації */
+  .marquee-track {
+    display: flex;
+    position: relative;
+    white-space: nowrap;
+    will-change: transform;
+    backface-visibility: hidden;
+    perspective: 1000;
+    transform-style: preserve-3d;
+  }
+  
+  .marquee-right .marquee-track {
+    animation: scroll-right 10s linear infinite;
+    transform: translate3d(0, 0, 0);
+  }
+  
+  .marquee-left .marquee-track {
+    animation: scroll-left 10s linear infinite;
+    transform: translate3d(0, 0, 0);
+  }
+  
+  /* При наведенні зупиняємо анімацію */
+  .marquee-right:hover .marquee-track,
+  .marquee-left:hover .marquee-track {
+    animation-play-state: paused;
+  }
+  
+  /* Анімація вправо - використовуємо translateZ для кращої продуктивності */
+  @keyframes scroll-right {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    100% {
+      transform: translate3d(-33.333%, 0, 0); /* Для 3 копій елементів */
+    }
+  }
+  
+  /* Анімація вліво */
+  @keyframes scroll-left {
+    0% {
+      transform: translate3d(-33.333%, 0, 0); /* Для 3 копій елементів */
+    }
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  
+  /* Стиль картки: фіксовані розміри для однаковості */
+  .marquee-item {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 200px;
+    width: 200px;
+    height: 110px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 8px;
+    padding: 16px;
+    margin-right: 20px;
+    text-align: center;
+    flex-shrink: 0;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+  
+  /* Прибираємо зайві відступи, щоб текст не «штовхав» картку */
+  .title-text,
+  .done-text {
+    margin: 0;
+    line-height: 1.4;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .title-text {
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+  
+  .done-text {
+    font-size: 14px;
+    opacity: 0.8;
+  }
+  
+  /* Мобільні стилі */
+  @media (max-width: 768px) {
+    .marquee-section {
+      padding: 24px 0;
+    }
+    
+    .marquee-wrapper {
+      gap: 1rem;
+    }
+    
+    .marquee-item {
+      min-width: 160px;
+      width: 160px;
+      height: 100px;
+      padding: 12px;
+      margin-right: 16px;
+    }
+    
+    .title-text {
+      font-size: 14px;
+    }
+    
+    .done-text {
+      font-size: 12px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .marquee-item {
+      min-width: 140px;
+      width: 140px;
+      height: 90px;
+      padding: 10px;
+      margin-right: 12px;
+    }
+    
+    .title-text {
+      font-size: 13px;
+    }
+    
+    .done-text {
+      font-size: 11px;
+    }
+  }

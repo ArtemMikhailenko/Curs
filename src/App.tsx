@@ -8,14 +8,14 @@ import { Services } from "./components/Services";
 import { Sponsors } from "./components/Sponsors";
 import "./App.css";
 import ReviewsBlock from "./components/ReviewsBlock/ReviewsBlock";
-import { TwoDirectionalSliders } from "./components/Tasks";
+import { TwoDirectionalMarquee } from "./components/Tasks";
 
 function App() {
   return (
     <>
       
       <Hero />
-      <TwoDirectionalSliders/>
+      <TwoDirectionalMarquee/>
       <Sponsors />
       <About />
       <HowItWorks />

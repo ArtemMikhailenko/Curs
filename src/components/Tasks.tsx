@@ -1,21 +1,12 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/autoplay";
-import "swiper/css/navigation";
+import React from "react";
+import "@/components/css/hero.css";
 
-// Компонента-картка з фіксованою висотою та вирівнюванням вмісту
-function MyCard({ title, done }: { title: string; done: number }) {
-  return (
-    <div className="bg-card text-white p-4 rounded-lg text-center h-35 flex flex-col justify-center">
-      <h3 className="text-lg font-semibold">{title}</h3>
-      <p className="mt-2">Виконано: {done}</p>
-    </div>
-  );
+interface Task {
+  title: string;
+  done: number;
 }
 
-// Усі 27 завдань
-const tasks = [
+const tasks: Task[] = [
   { title: "Курсова робота", done: 2161 },
   { title: "Дипломна робота", done: 540 },
   { title: "Реферат", done: 231 },
@@ -28,13 +19,13 @@ const tasks = [
   { title: "Магістерська робота", done: 187 },
   { title: "Підвищення унікальності тексту", done: 112 },
   { title: "Рецензія", done: 220 },
-  { title: "Переклад тексту з іншої мови", done: 70 },
+  { title: "Переклад тексту", done: 70 },
   { title: "Креслення", done: 270 },
   { title: "Презентація", done: 195 },
   { title: "Бізнес план", done: 82 },
   { title: "Доповідь", done: 324 },
   { title: "Лабораторна робота", done: 461 },
-  { title: "Онлайн допомога на іспиті", done: 164 },
+  { title: "Онлайн допомога", done: 164 },
   { title: "Копірайтинг", done: 273 },
   { title: "Рерайт", done: 222 },
   { title: "Тези", done: 360 },
@@ -45,74 +36,41 @@ const tasks = [
   { title: "Маркетингове дослідження", done: 291 },
 ];
 
-// Ділимо масив приблизно навпіл
-const firstHalf = tasks.slice(0, Math.ceil(tasks.length / 2));
-const secondHalf = tasks.slice(Math.ceil(tasks.length / 2));
+// Дублируем для бесшовного эффекта
+const duplicated = [...tasks, ...tasks, ...tasks];
 
-export function TwoDirectionalSliders() {
+export const TwoDirectionalMarquee: React.FC = () => {
   return (
-    <section className="container py-10" id="testimonials">
-        <h2 className="text-3xl md:text-4xl font-bold mb-6">
-        Що{" "}
-        <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
-        ми
-        </span>{" "}
-        для вас зробимо?
+    <section className="marquee-section container py-10" id="services">
+      <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center">
+        Що ми для вас зробимо?
       </h2>
-
-      <div className="space-y-8">
-        {/* Перший слайдер (рухається вправо) */}
-        <div>
-          <Swiper
-            modules={[Autoplay]}
-            spaceBetween={20}
-            slidesPerView={1}
-            loop
-            autoplay={{
-              delay: 2000,
-              disableOnInteraction: false,
-              reverseDirection: false, // рух вправо (стандарт)
-            }}
-            breakpoints={{
-              640: { slidesPerView: 2, spaceBetween: 15 },
-              768: { slidesPerView: 3, spaceBetween: 20 },
-              1024: { slidesPerView: 4, spaceBetween: 20 },
-            }}
-          >
-            {firstHalf.map((item, idx) => (
-              <SwiperSlide key={idx}>
-                <MyCard title={item.title} done={item.done} />
-              </SwiperSlide>
+      
+      <div className="marquee-wrapper">
+        {/* Перший ряд (рухається вправо) */}
+        <div className="marquee marquee-right">
+          <div className="marquee-track">
+            {duplicated.map((task, idx) => (
+              <div className="marquee-item" key={`right-${idx}`}>
+                <h3 className="title-text">{task.title}</h3>
+                <p className="done-text">Виконано: {task.done}</p>
+              </div>
             ))}
-          </Swiper>
+          </div>
         </div>
-
-        {/* Другий слайдер (рухається вліво) */}
-        <div>
-          <Swiper
-            modules={[Autoplay]}
-            spaceBetween={20}
-            slidesPerView={1}
-            loop
-            autoplay={{
-              delay: 2500,
-              disableOnInteraction: false,
-              reverseDirection: true, // рух вліво
-            }}
-            breakpoints={{
-              640: { slidesPerView: 2, spaceBetween: 15 },
-              768: { slidesPerView: 3, spaceBetween: 20 },
-              1024: { slidesPerView: 4, spaceBetween: 20 },
-            }}
-          >
-            {secondHalf.map((item, idx) => (
-              <SwiperSlide key={idx}>
-                <MyCard title={item.title} done={item.done} />
-              </SwiperSlide>
+        
+        {/* Другий ряд (рухається вліво) */}
+        <div className="marquee marquee-left">
+          <div className="marquee-track">
+            {duplicated.map((task, idx) => (
+              <div className="marquee-item" key={`left-${idx}`}>
+                <h3 className="title-text">{task.title}</h3>
+                <p className="done-text">Виконано: {task.done}</p>
+              </div>
             ))}
-          </Swiper>
+          </div>
         </div>
       </div>
     </section>
   );
-}
+};
