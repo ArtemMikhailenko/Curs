@@ -1,5 +1,4 @@
 import { OrderSheet } from "./Modal";
-import { Button } from "./ui/button";
 
 export const Cta = () => {
   return (

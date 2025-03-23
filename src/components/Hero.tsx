@@ -1,4 +1,3 @@
-import { Button } from "./ui/button";
 import '@/components/css/hero.css'
 import hero from '@/assets/hero2.png'
 import { OrderSheet } from "./Modal";

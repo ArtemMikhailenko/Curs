@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
+import { Card, CardHeader, CardTitle } from "./ui/card";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from 'swiper/modules';
 
@@ -223,7 +223,7 @@ export const HowItWorks = () => {
           1024: { slidesPerView: 4 },
         }}
       >
-        {features.map(({ icon, title, description }: FeatureProps) => (
+        {features.map(({ icon, title }: FeatureProps) => (
           <SwiperSlide key={title}>
             <Card className="bg-muted/50">
               <CardHeader>

@@ -1,6 +1,4 @@
-import { Button } from "../ui/button";
-import { buttonVariants } from "../ui/button";
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
+
 import disertation from '@/assets/dissertations.png'
 import { OrderSheet } from "../Modal";
 
