@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, FormEvent } from "react";
+import axios from "axios";
 import {
   Sheet,
   SheetContent,
@@ -13,28 +14,8 @@ import {
 import { Button, ButtonProps } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
-/**
- * Описание: Компонент OrderSheet — это «шторка» (Sheet) с формой заказа,
- * которая при сабмите отправляет POST-запрос на API:
- *    https://tele-push.ymca.one
- *
- * Поля формы мапятся на поля, которые принимает API:
- *    - name => name
- *    - phone => phone (обязательно, если no_phone не установлен на сервере)
- *    - typeOfWork => form (пример)
- *    - Остальные данные (messenger, deadline, pages, uniqueness, additionalInfo)
- *      помещаем в comment, чтобы сервер мог получить всю информацию.
- *
- * API в случае успеха возвращает:
- *    { "status": "success" }
- * В случае ошибки (например, phone_incorrect):
- *    { "status": "error", "msg": "phone_incorrect" }
- */
-
 interface OrderSheetProps {
-  /** Текст на кнопке, которая открывает форму */
   buttonText?: string;
-  /** Вариант стилизации кнопки (outline, default и т.д.) */
   buttonVariant?: ButtonProps["variant"];
 }
 
@@ -43,8 +24,6 @@ export function OrderSheet({
   buttonVariant = "default",
 }: OrderSheetProps) {
   const [open, setOpen] = useState(false);
-
-  // Локальные стейты для полей формы
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [typeOfWork, setTypeOfWork] = useState("");
@@ -53,16 +32,14 @@ export function OrderSheet({
   const [pages, setPages] = useState("1");
   const [uniqueness, setUniqueness] = useState("100");
   const [additionalInfo, setAdditionalInfo] = useState("");
-
   const [loading, setLoading] = useState(false);
 
-  // Обработчик сабмита
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
     try {
-      // Сформируем поле comment, объединив остальные поля
+      // Формируем объединённое поле comment
       const combinedComment = `
 Messenger: ${messenger}
 Deadline: ${deadline}
@@ -71,42 +48,31 @@ Uniqueness: ${uniqueness}%
 Additional info: ${additionalInfo}
       `.trim();
 
-      // Тело POST-запроса
-      const body = {
-        name: name.trim() || undefined, // если пусто, не отправляем
-        phone: phone.trim() || undefined,
-        form: typeOfWork.trim() || undefined,
-        comment: combinedComment || undefined,
-      };
+      // Создаём FormData и добавляем поля
+      const formData = new FormData();
+      if (name.trim()) formData.append("name", name.trim());
+      if (phone.trim()) formData.append("phone", phone.trim());
+      if (typeOfWork.trim()) formData.append("form", typeOfWork.trim());
+      if (combinedComment) formData.append("comment", combinedComment);
 
-      // Выполняем запрос
-      const response = await fetch("https://tele-push.ymca.one", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(body),
-      });
-
-      const data = await response.json();
+      // Отправка запроса через axios с FormData
+      const response = await axios.post("https://tele-push.ymca.one", formData);
+      const data = response.data;
 
       if (data.status === "error") {
-        // Обработка ошибки
         if (data.msg === "phone_incorrect") {
           alert("Ошибка: Некорректный номер телефона!");
         } else {
           alert(`Ошибка: ${data.msg || "Неизвестная ошибка"}`);
         }
       } else if (data.status === "success") {
-        // Успешно
         alert("Ваш запрос успешно отправлен!");
-        // Закроем форму и сбросим поля
         setOpen(false);
         resetForm();
       } else {
         alert("Неизвестный ответ от сервера.");
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error("Ошибка при отправке формы:", error);
       alert("Произошла ошибка при отправке. Попробуйте позже.");
     } finally {
@@ -127,7 +93,6 @@ Additional info: ${additionalInfo}
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
-      {/* Кнопка, открывающая панель */}
       <SheetTrigger asChild>
         <Button variant={buttonVariant}>{buttonText}</Button>
       </SheetTrigger>
@@ -140,9 +105,7 @@ Additional info: ${additionalInfo}
           </SheetDescription>
         </SheetHeader>
 
-        {/* Форма */}
         <form className="space-y-4 mt-4" onSubmit={handleSubmit}>
-          {/* Имя */}
           <div>
             <label className="block text-sm font-medium mb-1" htmlFor="name">
               Ім&apos;я
@@ -155,7 +118,6 @@ Additional info: ${additionalInfo}
             />
           </div>
 
-          {/* Телефон */}
           <div>
             <label className="block text-sm font-medium mb-1" htmlFor="phone">
               +38 (___) ___-__-__
@@ -169,12 +131,8 @@ Additional info: ${additionalInfo}
             />
           </div>
 
-          {/* Тип работы */}
           <div>
-            <label
-              className="block text-sm font-medium mb-1"
-              htmlFor="typeOfWork"
-            >
+            <label className="block text-sm font-medium mb-1" htmlFor="typeOfWork">
               Тип роботи
             </label>
             <Input
@@ -185,7 +143,6 @@ Additional info: ${additionalInfo}
             />
           </div>
 
-          {/* Messenger */}
           <div>
             <label className="block text-sm font-medium mb-1" htmlFor="messenger">
               Ваш Telegram або Viber
@@ -198,7 +155,6 @@ Additional info: ${additionalInfo}
             />
           </div>
 
-          {/* Deadline */}
           <div>
             <label className="block text-sm font-medium mb-1" htmlFor="deadline">
               Термін
@@ -211,7 +167,6 @@ Additional info: ${additionalInfo}
             />
           </div>
 
-          {/* Pages */}
           <div>
             <label className="block text-sm font-medium mb-1" htmlFor="pages">
               Кількість сторінок (1–150)
@@ -226,7 +181,6 @@ Additional info: ${additionalInfo}
             />
           </div>
 
-          {/* Uniqueness */}
           <div>
             <label
               className="block text-sm font-medium mb-1"
@@ -244,7 +198,6 @@ Additional info: ${additionalInfo}
             />
           </div>
 
-          {/* Additional info */}
           <div>
             <label
               className="block text-sm font-medium mb-1"
