@@ -51,7 +51,7 @@ const secondHalf = tasks.slice(Math.ceil(tasks.length / 2));
 
 export function TwoDirectionalSliders() {
   return (
-    <section className="container py-10">
+    <section className="container py-10" id="testimonials">
         <h2 className="text-3xl md:text-4xl font-bold mb-6">
         Що{" "}
         <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">

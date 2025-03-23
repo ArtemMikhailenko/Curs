@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -8,7 +8,6 @@ import {
   Sheet,
   SheetContent,
   SheetHeader,
-  SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { buttonVariants } from "./ui/button";
@@ -24,15 +23,15 @@ interface RouteProps {
 const routeList: RouteProps[] = [
   
   {
-    href: "#testimonials",
+    href: "/#testimonials",
     label: "Види робіт",
   },
   {
-    href: "#pricing",
+    href: "/#faq",
     label: "Питання",
   },
   {
-    href: "#faq",
+    href: "/#services",
     label: "Про нас",
   },
   {
@@ -43,6 +42,19 @@ const routeList: RouteProps[] = [
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  useEffect(() => {
+    // Получаем hash из URL, например, "#services"
+    const { hash } = window.location;
+    if (hash) {
+      // Делаем небольшую задержку, чтобы элемент успел отрисоваться
+      setTimeout(() => {
+        const element = document.getElementById(hash.slice(1));
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    }
+  }, []);
   return (
     <header className="sticky border-b-[1px] top-0 z-40 w-full bg-white dark:border-b-slate-700 dark:bg-background">
       <NavigationMenu className="mx-auto">
@@ -76,9 +88,13 @@ export const Navbar = () => {
 
               <SheetContent side={"left"}>
                 <SheetHeader>
-                  <SheetTitle className="font-bold text-xl">
-                    Shadcn/React
-                  </SheetTitle>
+                <a
+              rel="noreferrer noopener"
+              href="/"
+              className="ml-2 font-bold text-xl flex header-logo"
+            >
+              <img src={logo} alt="" />
+            </a>
                 </SheetHeader>
                 <nav className="flex flex-col justify-center items-center gap-2 mt-4">
                   {routeList.map(({ href, label }: RouteProps) => (
