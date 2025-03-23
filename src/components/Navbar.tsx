@@ -36,7 +36,7 @@ const routeList: RouteProps[] = [
     label: "Про нас",
   },
   {
-    href: "#features",
+    href: "/dissertations",
     label: "Дисертації",
   },
 ];

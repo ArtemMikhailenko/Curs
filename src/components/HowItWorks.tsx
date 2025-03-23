@@ -233,10 +233,10 @@ export const HowItWorks = () => {
                     alt={title}
                     style={{ width: "170px", height: "170px", objectFit: "cover" }}
                   />
-                  {title}
+                  {/* {title} */}
                 </CardTitle>
               </CardHeader>
-              <CardContent>{description}</CardContent>
+              {/* <CardContent>{description}</CardContent> */}
             </Card>
           </SwiperSlide>
         ))}

@@ -1,167 +1,59 @@
-import { LogoIcon } from "./Icons";
+import logo from "@/assets/Logo.png";
+import { Send, Phone } from "lucide-react";
 
 export const Footer = () => {
   return (
-    <footer id="footer">
-      <hr className="w-11/12 mx-auto" />
+    <footer id="footer" className="bg-black text-white">
+      {/* Горизонтальная линия, при желании можно убрать или перекрасить */}
+      <hr className="w-11/12 mx-auto border-gray-700" />
 
-      <section className="container py-20 grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-x-12 gap-y-8">
-        <div className="col-span-full xl:col-span-2">
-          <a
-            rel="noreferrer noopener"
-            href="/"
-            className="font-bold text-xl flex"
-          >
-            <LogoIcon />
-            ShadcnUI/React
-          </a>
+      {/* Сетка с двумя колонками: слева (лого + текст) и справа (контакты) */}
+      <section className="container py-20 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
+        {/* Левая колонка */}
+        <div className="flex flex-col gap-4">
+          {/* Лого и текст в одной строке (можно сделать в одной колонке, 
+              но обычно в строке смотрится аккуратнее) */}
+          <div className="flex items-center gap-4">
+            <img
+              src={logo}
+              alt="InteLED.AI logo"
+              className="w-16 h-auto object-contain"
+            />
+            <h3 className="text-xl font-bold">InteLED.AI</h3>
+          </div>
+
+          {/* Дисклеймер под лого */}
+          <p className="text-sm text-gray-400 leading-relaxed max-w-md">
+            Компанія InteLED.AI не продає жодних документів! 
+            Надаємо послуги виключно з пошуку та структурування інформації 
+            в якості прикладу.
+          </p>
         </div>
 
-        <div className="flex flex-col gap-2">
-          <h3 className="font-bold text-lg">Follow US</h3>
-          <div>
+        {/* Правая колонка: контакты */}
+        <div className="flex flex-col items-start md:items-end gap-2">
+          <h3 className="font-bold text-lg">Залишились питання?</h3>
+          <div className="flex items-center gap-2">
+            <Send className="w-5 h-5 text-green-400" />
             <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
+              href="https://t.me/inteled_ai"
+              className="opacity-80 hover:opacity-100 transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              Github
+              @inteled_ai
             </a>
           </div>
-
-          <div>
+          <div className="flex items-center gap-2">
+            <Phone className="w-5 h-5 text-green-400" />
             <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
+              href="tel:+380689958077"
+              className="opacity-80 hover:opacity-100 transition-colors"
             >
-              Twitter
-            </a>
-          </div>
-
-          <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Dribbble
-            </a>
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-2">
-          <h3 className="font-bold text-lg">Platforms</h3>
-          <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Web
-            </a>
-          </div>
-
-          <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Mobile
-            </a>
-          </div>
-
-          <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Desktop
+              +38 (068) 995 80 77
             </a>
           </div>
         </div>
-
-        <div className="flex flex-col gap-2">
-          <h3 className="font-bold text-lg">About</h3>
-          <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Features
-            </a>
-          </div>
-
-          <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Pricing
-            </a>
-          </div>
-
-          <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              FAQ
-            </a>
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-2">
-          <h3 className="font-bold text-lg">Community</h3>
-          <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Youtube
-            </a>
-          </div>
-
-          <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Discord
-            </a>
-          </div>
-
-          <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Twitch
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <section className="container pb-14 text-center">
-        <h3>
-          &copy; 2024 Landing page made by{" "}
-          <a
-            rel="noreferrer noopener"
-            target="_blank"
-            href="https://www.linkedin.com/in/leopoldo-miranda/"
-            className="text-primary transition-all border-primary hover:border-b-2"
-          >
-            Leo Miranda
-          </a>
-        </h3>
       </section>
     </footer>
   );

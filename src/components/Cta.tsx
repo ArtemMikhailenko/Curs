@@ -1,3 +1,4 @@
+import { OrderSheet } from "./Modal";
 import { Button } from "./ui/button";
 
 export const Cta = () => {
@@ -16,12 +17,13 @@ export const Cta = () => {
             Ми пропонуємо комплексне рішення для розробки дипломних робіт, курсових проектів та інших академічних завдань. З нами ви отримаєте професійний підхід, індивідуальний супровід і гарантію високоякісного результату.
           </p>
         </div>
-        <div className="space-y-4 lg:col-start-2">
-          <Button className="w-full md:mr-4 md:w-auto">Замовити консультацію</Button>
-          <Button variant="outline" className="w-full md:w-auto">
-            Дізнатися більше
-          </Button>
+        <div className="flex flex-col md:flex-row gap-4 lg:col-start-2">
+          <OrderSheet buttonText="Замовити консультацію" />
+          <OrderSheet buttonText="Дізнатися більше" buttonVariant="outline" />
         </div>
+
+
+
       </div>
     </section>
   );
