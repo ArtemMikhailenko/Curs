@@ -97,7 +97,7 @@ Additional info: ${additionalInfo}
         <Button variant={buttonVariant}>{buttonText}</Button>
       </SheetTrigger>
 
-      <SheetContent side="right" className="w-[90%] sm:w-[400px]">
+      <SheetContent side="right" className="w-[90%] sm:w-[400px]  overflow-y-auto">
         <SheetHeader>
           <SheetTitle>Оформлення замовлення</SheetTitle>
           <SheetDescription>
